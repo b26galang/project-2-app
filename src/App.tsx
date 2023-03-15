@@ -4,6 +4,7 @@ import { ComplaintForm } from './components/complaint-form';
 import { ComplaintList } from './components/complaint-list';
 import { MeetingForm } from './components/meeting-form';
 import { MeetingList } from './components/meeting-list';
+import "./style/styles.css";
 
 function App() {
   return <>

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { getMeetings, Meeting } from "../api/meeting-requests";
+import { getMeetings } from "../api/meeting-requests";
+import { Meeting } from "../reducer/meeting-reducer";
 
 export function MeetingList() {
 

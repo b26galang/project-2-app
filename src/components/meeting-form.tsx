@@ -1,6 +1,6 @@
-import { useReducer } from "react";
+import { FormEvent, useReducer } from "react";
 import { createMeeting } from "../api/meeting-requests";
-import { MeetingReducer } from "../reducer/meeting-reducer";
+import { initialState, MeetingReducer } from "../reducer/meeting-reducer";
 
 export type MeetingInputs = {
     address: string,
@@ -31,19 +31,19 @@ export function MeetingForm() {
                     <label htmlFor="address">Address</label>
                 </li>
                 <li>
-                    <input id="address" type="text" required />
+                    <input id="address" type="text" onChange={e => dispatch({ type: "SET_ADDRESS", payload: e.target.value })} required />
                 </li>
                 <li>
                     <label htmlFor="summary">Summary</label>
                 </li>
                 <li>
-                    <input id="summary" type="text" required />
+                    <input id="summary" type="text" onChange={e => dispatch({ type: "SET_SUMMARY", payload: e.target.value })} required />
                 </li>
                 <li>
                     <label htmlFor="time">Time</label>
                 </li>
                 <li>
-                    <input id="time" type="number" required />
+                    <input id="time" type="number" onChange={e => dispatch({ type: "SET_TIME", payload: Number(e.target.value) })} required />
                 </li>
                 <li>
                     <button type="submit">Create Meeting</button>
