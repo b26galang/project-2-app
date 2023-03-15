@@ -1,12 +1,6 @@
 import { MeetingInputs } from "../components/meeting-form";
+import { Meeting } from "../reducer/meeting-reducer";
 import { url } from "./complaint-requests";
-
-export type Meeting = {
-    meetingId: number,
-    address: string,
-    summary: string,
-    time: number
-}
 
 export async function createMeeting(meeting: MeetingInputs): Promise<Meeting> {
     const response = await fetch(`${url}/meetings`, {
@@ -54,3 +48,4 @@ export async function deleteMeeting(id: Meeting): Promise<void> {
         method: 'DELETE',
     });
 }
+
