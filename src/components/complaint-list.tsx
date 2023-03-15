@@ -17,7 +17,7 @@ export function ComplaintList() {
         <h2>Complaints</h2>
         <table>
             {complaints.map(c =>
-                <tr key={c.id}>
+                <tr key={c.complaintId}>
                     <td>{c.description}</td>
                     <td><button>Review</button></td>
                 </tr>)}
