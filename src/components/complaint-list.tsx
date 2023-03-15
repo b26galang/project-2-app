@@ -14,6 +14,7 @@ export function ComplaintList() {
     }, []);
 
     return <>
+    <h1>Complaints List for App User</h1>
         <h2>Complaints</h2>
         <table>
             <tbody>

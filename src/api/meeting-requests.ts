@@ -1,3 +1,4 @@
+import { MeetingInputs } from "../components/meeting-form";
 import { url } from "./complaint-requests";
 
 export type Meeting = {
@@ -7,18 +8,18 @@ export type Meeting = {
     time: number
 }
 
-// export async function createMeeting(meeting: MeetingInput): Promise<Meeting> {
-//     const response = await fetch(`${url}/meetings`, {
-//         method: "POST",
-//         body: JSON.stringify(meeting),
-//         headers: {
-//             "Content-Type": "application/json"
-//         }
-//     });
+export async function createMeeting(meeting: MeetingInputs): Promise<Meeting> {
+    const response = await fetch(`${url}/meetings`, {
+        method: "POST",
+        body: JSON.stringify(meeting),
+        headers: {
+            "Content-Type": "application/json"
+        }
+    });
 
-//     const newMeeting: Meeting = await response.json();
-//     return newMeeting;
-// }
+    const newMeeting: Meeting = await response.json();
+    return newMeeting;
+}
 
 export async function updateMeeting(meeting: Meeting): Promise<Meeting> {
     const response = await fetch(`${url}/meetings/${meeting.meetingId}`, {
