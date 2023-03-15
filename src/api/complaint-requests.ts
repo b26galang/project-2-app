@@ -1,11 +1,7 @@
 import { ComplaintInput } from "../components/complaint-form";
 
-type ComplaintIdInput = {
-    id: number;
-}
-
 export type Complaint = {
-    id: number,
+    complaintId: number,
     description: string,
     status: string,
     meetingId: number,
@@ -27,7 +23,7 @@ export async function createComplaint(complaint: ComplaintInput): Promise<Compla
 }
 
 export async function updateComplaint(complaint: Complaint): Promise <Complaint> {
-    const response = await fetch(`${url}/complaints/${complaint.id}`, {
+    const response = await fetch(`${url}/complaints/${complaint.complaintId}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
@@ -44,13 +40,13 @@ export async function getComplaints(): Promise <Complaint[]> {
     return response;
 }
 
-export async function getComplaintById(props: ComplaintIdInput): Promise<Complaint | null> {
-    const response = await fetch(`${url}/characters/${props.id}`);
+export async function getComplaintById(id: Complaint): Promise<Complaint | null> {
+    const response = await fetch(`${url}/characters/${id.complaintId}`);
     if (!response.ok) {
         alert('No complaint was found with that ID')
         return null;
     }
-    const complaint: Complaint | null = await response.json();
-    return complaint;
+    const retrievedComplaint: Complaint | null = await response.json();
+    return retrievedComplaint;
 }
 
