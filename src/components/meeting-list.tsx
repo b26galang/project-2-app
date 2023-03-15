@@ -13,6 +13,7 @@ export function MeetingList() {
     }, []);
 
     return <>
+    <h1>Guest Meeting View</h1>
         <h2>Meetings</h2>
         <table>
             <tbody>

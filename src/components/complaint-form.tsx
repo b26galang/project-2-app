@@ -18,6 +18,7 @@ export function ComplaintForm() {
     return <>
 
         <form onSubmit={handleSubmit}>
+            <h1>Complaint Form</h1>
             <h2>Submit a Complaint</h2>
             <label htmlFor="description">Description</label>
             <input
