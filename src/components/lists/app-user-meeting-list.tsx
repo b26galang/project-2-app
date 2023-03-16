@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { getMeetings } from "../../api/meeting-requests";
 import { Meeting } from "../../reducer/meeting-reducer";
 
@@ -16,7 +17,7 @@ export function AppUserMeetingList() {
     return <>
         <h2>Meetings</h2>
         <h3>Add a New Meeting</h3>
-        <button>Add</button>
+        <Link to='/meetingform'><button>Add</button></Link>
         <table>
             <tbody>
                 {meetings.map(m =>
