@@ -1,6 +1,6 @@
 import { FormEvent, useReducer } from "react";
-import { createMeeting } from "../api/meeting-requests";
-import { initialState, MeetingReducer } from "../reducer/meeting-reducer";
+import { createMeeting } from "../../api/meeting-requests";
+import { initialState, MeetingReducer } from "../../reducer/meeting-reducer";
 
 export type MeetingInputs = {
     address: string,
@@ -23,7 +23,6 @@ export function MeetingForm() {
 
     return <>
 
-        <h1>Create Meeting (App User)</h1>
         <form onSubmit={(e: FormEvent<HTMLFormElement>) => submitData(e)}>
             <h2>Create a Meeting</h2>
             <ul>

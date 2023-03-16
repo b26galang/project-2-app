@@ -1,10 +1,14 @@
-import { ComplaintInput } from "../components/complaint-form";
+import { ComplaintInput } from "../components/forms/complaint-form";
 
 export type Complaint = {
     complaintId: number,
     description: string,
     status: string,
     meetingId: number,
+}
+
+export type complaintId = {
+    complaintId: number
 }
 
 export const url = "http://127.0.0.1:8080";
@@ -40,13 +44,9 @@ export async function getComplaints(): Promise <Complaint[]> {
     return response;
 }
 
-export async function getComplaintById(id: Complaint): Promise<Complaint | null> {
-    const response = await fetch(`${url}/characters/${id.complaintId}`);
-    if (!response.ok) {
-        alert('No complaint was found with that ID')
-        return null;
-    }
-    const retrievedComplaint: Complaint | null = await response.json();
+export async function getComplaintById(id: complaintId): Promise<Complaint> {
+    const response = await fetch(`${url}/complaints/${id.complaintId}`);
+    const retrievedComplaint: Complaint = await response.json();
     return retrievedComplaint;
 }
 

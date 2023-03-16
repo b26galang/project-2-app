@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { Complaint, getComplaints } from "../api/complaint-requests";
+import { Complaint, getComplaints } from "../../api/complaint-requests";
+import { Link } from "react-router-dom"
 
 
 export function ComplaintList() {
@@ -14,14 +15,14 @@ export function ComplaintList() {
     }, []);
 
     return <>
-    <h1>Complaints List for App User</h1>
         <h2>Complaints</h2>
         <table>
             <tbody>
                 {complaints.map(c =>
                     <tr key={c.complaintId}>
                         <td>{c.description}</td>
-                        <td><button>Review</button></td>
+                        <td>{c.status}</td>
+                        <td><Link to={`/complaint/${c.complaintId}`}><button>Review</button></Link></td>
                     </tr>)}
             </tbody>
         </table>

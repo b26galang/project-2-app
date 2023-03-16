@@ -1,5 +1,6 @@
 import { useState, FormEvent } from "react";
-import { createComplaint } from "../api/complaint-requests";
+import { useNavigate } from "react-router-dom";
+import { createComplaint } from "../../api/complaint-requests";
 
 export type ComplaintInput = {
     description: string,
@@ -9,10 +10,13 @@ export function ComplaintForm() {
 
     const [complaint, setComplaint] = useState<ComplaintInput>({ description: '' });
 
+    const navigate = useNavigate();
+
     async function handleSubmit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault();
         await createComplaint(complaint);
         setComplaint({ description: '' });
+        navigate('/home');
     }
 
     return <>
@@ -28,6 +32,7 @@ export function ComplaintForm() {
                 value={complaint.description}
                 onChange={e => setComplaint({ description: e.target.value })}
                 required />
+                {/* Add modal for confirmation */}
             <button type="submit">Post</button>
         </form>
 

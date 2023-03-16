@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
-import { getMeetings } from "../api/meeting-requests";
-import { Meeting } from "../reducer/meeting-reducer";
+import { useState, useEffect } from "react";
+import { getMeetings } from "../../api/meeting-requests";
+import { Meeting } from "../../reducer/meeting-reducer";
 
-export function MeetingList() {
+export function AppUserMeetingList() {
 
     const [meetings, setMeetings] = useState<Meeting[]>([]);
 
@@ -14,17 +14,19 @@ export function MeetingList() {
     }, []);
 
     return <>
-    <h1>Guest Meeting View</h1>
         <h2>Meetings</h2>
+        <h3>Add a New Meeting</h3>
+        <button>Add</button>
         <table>
             <tbody>
                 {meetings.map(m =>
                     <tr key={m.meetingId}>
                         <td>{m.summary}</td>
-                        {/* clicking on view will direct user to specific meeting page where it will show details: address and time */}
+                        <td><button>View</button></td>
                         {/* <td>{m.time}</td>
                         <td>{m.address}</td> */}
-                        <td><button>View</button></td>
+                        {/* <td><button>Edit</button></td>
+                        <td><button>Delete</button></td> */}
                     </tr>)}
             </tbody>
         </table>
