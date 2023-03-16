@@ -1,4 +1,4 @@
-import { MeetingInputs } from "../components/meeting-form";
+import { MeetingInputs } from "../components/forms/meeting-form";
 import { Meeting } from "../reducer/meeting-reducer";
 import { url } from "./complaint-requests";
 
