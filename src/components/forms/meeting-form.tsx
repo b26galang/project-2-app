@@ -1,4 +1,5 @@
 import { FormEvent, useReducer } from "react";
+import { useNavigate } from "react-router-dom";
 import { createMeeting } from "../../api/meeting-requests";
 import { initialState, MeetingReducer } from "../../reducer/meeting-reducer";
 
@@ -10,6 +11,8 @@ export type MeetingInputs = {
 
 export function MeetingForm() {
 
+    const navigate = useNavigate();
+
     const [meetingState, dispatch] = useReducer(MeetingReducer, initialState);
 
     async function submitData(event: FormEvent<HTMLFormElement>) {
@@ -19,6 +22,7 @@ export function MeetingForm() {
         meeting.time = meetingState.time;
 
         createMeeting(meeting);
+        navigate('/appuserhome');
     }
 
     return <>
