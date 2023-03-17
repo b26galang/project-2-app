@@ -1,7 +1,7 @@
 import { FormEvent, useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { useNavigate } from "react-router-dom";
-import { Complaint, getComplaintById, getComplaints, updateComplaint, complaintId } from "../../api/complaint-requests";
+import { Complaint, getComplaintById, updateComplaint } from "../../api/complaint-requests";
 
 
 export function ReviewComplaintForm() {

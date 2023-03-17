@@ -24,11 +24,11 @@ function App() {
         <Route path='/complaints' element={<ComplaintList />} />
         <Route path='/meetingform' element={<MeetingForm />} />
         <Route path='/meetings' element={<MeetingList />} />
-        <Route path='/guestmeeting' element={<MeetingPage/>} />
+        <Route path='/meeting/:meetingId' element={<MeetingPage/>} />
         <Route path='/appusermeetings' element={<AppUserMeetingList />} />
       </Routes>
     </BrowserRouter>
-F
+
 
 
   </>
