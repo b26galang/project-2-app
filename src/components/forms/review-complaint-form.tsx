@@ -6,17 +6,14 @@ import { Complaint, getComplaintById, updateComplaint } from "../../api/complain
 
 export function ReviewComplaintForm() {
 
-    const { complaintId } = useParams<{ complaintId: string }>();
+    const { complaintId } = useParams();
     const [complaint, setComplaint] = useState<Complaint>();
     const [status, setStatus] = useState<string>("");
 
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (complaintId) {
-            const id = parseInt(complaintId, 10);
-            getComplaintById({ complaintId: id }).then((data) => setComplaint(data));
-        }
+        getComplaintById(Number(complaintId)).then((data) => setComplaint(data));
     }, [complaintId]);
 
     async function handleSubmit(event: FormEvent<HTMLFormElement>) {

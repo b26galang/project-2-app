@@ -12,14 +12,11 @@ export function MeetingPage() {
     const [complaints, setComplaints] = useState<Complaint[]>([]);
 
     useEffect(() => {
-        if (meetingId) {
-            const id = parseInt(meetingId, 10);
-            getMeetingById({ meetingId: id }).then((data) => setMeeting(data));
-        }
+        getMeetingById(Number(meetingId)).then((data) => setMeeting(data));
     }, [meetingId]);
 
     return <>
-        {meeting?.meetingId &&
+        {meeting &&
             <div>
                 <h2>Meetings details</h2>
                 <ul>

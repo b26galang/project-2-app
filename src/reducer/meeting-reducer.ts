@@ -9,9 +9,8 @@ export type Meeting = {
 export type SetMeetingAddress = { type: "SET_ADDRESS", payload: string };
 export type SetMeetingSummary = { type: "SET_SUMMARY", payload: string };
 export type SetMeetingTime = { type: "SET_TIME", payload: number };
-export type AddMeeting = {type: "ADD_MEETING", payload: Meeting };
 
-export type MeetingAction = SetMeetingAddress | SetMeetingSummary | SetMeetingTime | AddMeeting; 
+export type MeetingAction = SetMeetingAddress | SetMeetingSummary | SetMeetingTime; 
 
 export const initialState: Meeting = {
     meetingId: 0,
@@ -34,9 +33,6 @@ export function MeetingReducer(state: Meeting = initialState, action: MeetingAct
         }
         case "SET_TIME": {
             nextState.time = action.payload;
-            return nextState;
-        }
-        case "ADD_MEETING": {
             return nextState;
         }
     }  
