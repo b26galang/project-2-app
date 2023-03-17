@@ -11,6 +11,7 @@ import { ReviewComplaintForm } from './components/forms/review-complaint-form';
 import "./style/styles.css";
 import { AppUserHomePage } from './pages/app-user-home-page';
 import { MeetingPage } from './pages/meeting-page';
+import { EditMeetingForm } from './components/forms/edit-meeting-form';
 
 function App() {
   return <>
@@ -25,6 +26,7 @@ function App() {
         <Route path='/meetingform' element={<MeetingForm />} />
         <Route path='/meetings' element={<MeetingList />} />
         <Route path='/meeting/:meetingId' element={<MeetingPage/>} />
+        <Route path='/editmeeting/:meetingId' element={<EditMeetingForm />} />
         <Route path='/appusermeetings' element={<AppUserMeetingList />} />
       </Routes>
     </BrowserRouter>

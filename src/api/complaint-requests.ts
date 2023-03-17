@@ -44,8 +44,8 @@ export async function getComplaints(): Promise <Complaint[]> {
     return response;
 }
 
-export async function getComplaintById(id: ComplaintId): Promise<Complaint> {
-    const response = await fetch(`${url}/complaints/${id.complaintId}`);
+export async function getComplaintById(id: number): Promise<Complaint> {
+    const response = await fetch(`${url}/complaints/${id}`);
     const retrievedComplaint: Complaint = await response.json();
     return retrievedComplaint;
 }

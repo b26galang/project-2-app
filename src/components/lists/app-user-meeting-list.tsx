@@ -23,11 +23,7 @@ export function AppUserMeetingList() {
                 {meetings.map(m =>
                     <tr key={m.meetingId}>
                         <td>{m.summary}</td>
-                        <td><button>View</button></td>
-                        {/* <td>{m.time}</td>
-                        <td>{m.address}</td> */}
-                        {/* <td><button>Edit</button></td>
-                        <td><button>Delete</button></td> */}
+                        <td><Link to={`/editmeeting/${m.meetingId}`}><button>Edit</button></Link></td>
                     </tr>)}
             </tbody>
         </table>
