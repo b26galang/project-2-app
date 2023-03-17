@@ -2,6 +2,10 @@ import { MeetingInputs } from "../components/forms/meeting-form";
 import { Meeting } from "../reducer/meeting-reducer";
 import { url } from "./complaint-requests";
 
+export type MeetingId = {
+    meetingId: number
+}
+
 export async function createMeeting(meeting: MeetingInputs): Promise<Meeting> {
     const response = await fetch(`${url}/meetings`, {
         method: "POST",
@@ -33,17 +37,13 @@ export async function getMeetings(): Promise <Meeting[]> {
     return response;
 }
 
-export async function getMeetingById(id: Meeting): Promise<Meeting | null> {
+export async function getMeetingById(id: MeetingId): Promise<Meeting> {
     const response = await fetch(`${url}/meetings/${id.meetingId}`);
-    if (!response.ok) {
-        alert('No meeting was found with that ID')
-        return null;
-    }
-    const retrievedMeeting: Meeting | null = await response.json();
+    const retrievedMeeting: Meeting = await response.json();
     return retrievedMeeting;
 }
 
-export async function deleteMeeting(id: Meeting): Promise<void> {
+export async function deleteMeeting(id: MeetingId): Promise<void> {
     await fetch(`${url}/meetings/${id.meetingId}`, {
         method: 'DELETE',
     });

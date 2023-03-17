@@ -7,7 +7,7 @@ export type Complaint = {
     meetingId: number,
 }
 
-export type complaintId = {
+export type ComplaintId = {
     complaintId: number
 }
 
@@ -44,7 +44,7 @@ export async function getComplaints(): Promise <Complaint[]> {
     return response;
 }
 
-export async function getComplaintById(id: complaintId): Promise<Complaint> {
+export async function getComplaintById(id: ComplaintId): Promise<Complaint> {
     const response = await fetch(`${url}/complaints/${id.complaintId}`);
     const retrievedComplaint: Complaint = await response.json();
     return retrievedComplaint;
