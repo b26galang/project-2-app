@@ -6,7 +6,6 @@ import { Complaint, getComplaintById, getComplaints, updateComplaint, complaintI
 
 export function ReviewComplaintForm() {
 
-
     const { complaintId } = useParams<{ complaintId: string }>();
     const [complaint, setComplaint] = useState<Complaint>();
     const [status, setStatus] = useState<string>("");

@@ -10,6 +10,7 @@ import { MeetingList } from './components/lists/meeting-list';
 import { ReviewComplaintForm } from './components/forms/review-complaint-form';
 import "./style/styles.css";
 import { AppUserHomePage } from './pages/app-user-home-page';
+import { MeetingPage } from './pages/meeting-page';
 
 function App() {
   return <>
@@ -23,10 +24,11 @@ function App() {
         <Route path='/complaints' element={<ComplaintList />} />
         <Route path='/meetingform' element={<MeetingForm />} />
         <Route path='/meetings' element={<MeetingList />} />
+        <Route path='/guestmeeting' element={<MeetingPage/>} />
         <Route path='/appusermeetings' element={<AppUserMeetingList />} />
       </Routes>
     </BrowserRouter>
-
+F
 
 
   </>

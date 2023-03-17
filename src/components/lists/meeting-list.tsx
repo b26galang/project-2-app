@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { getMeetings } from "../../api/meeting-requests";
 import { Meeting } from "../../reducer/meeting-reducer";
 
@@ -14,7 +15,7 @@ export function MeetingList() {
     }, []);
 
     return <>
-    <h1>Guest Meeting View</h1>
+        <h1>Guest Meeting View</h1>
         <h2>Meetings</h2>
         <table>
             <tbody>
@@ -24,7 +25,7 @@ export function MeetingList() {
                         {/* clicking on view will direct user to specific meeting page where it will show details: address and time */}
                         {/* <td>{m.time}</td>
                         <td>{m.address}</td> */}
-                        <td><button>View</button></td>
+                        <td><Link to={`/meeting/${m.meetingId}`}><button>View</button></Link></td>
                     </tr>)}
             </tbody>
         </table>
