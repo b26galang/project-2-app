@@ -1,8 +1,8 @@
-import { FormEvent, useEffect, useReducer, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { Complaint } from "../api/complaint-requests";
-import { getMeetingById, updateMeeting } from "../api/meeting-requests";
-import { MeetingReducer, initialState, Meeting } from "../reducer/meeting-reducer";
+import { getMeetingById } from "../api/meeting-requests";
+import { Meeting } from "../reducer/meeting-reducer";
 
 
 export function MeetingPage() {
