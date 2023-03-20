@@ -1,3 +1,152 @@
+@import url(//db.onlinewebfonts.com/c/c935c03285f3914c2b5a608a55bd2763?family=Maplestory);
+
+
+html {
+    cursor: url(http://www.rw-designer.com/cursor-extern.php?id=35050), auto;
+}
+
 li {
     list-style: none;
+    font-size: 20px;
+}
+
+body {
+    margin: 0;
+    font-family: 'MapleStory', sans-serif;
+    background-image: url(https://i.pinimg.com/originals/b7/bf/de/b7bfdedce97b02e188dc3b4e406dca44.jpg);
+}
+
+.pageContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+}
+
+#logoutBtn {
+    display: inline;
+    color: white;
+    float: right;
+    padding-right: 30px;
+}
+
+a:active,
+a:visited {
+    color: white;
+    cursor: url(http://www.rw-designer.com/cursor-extern.php?id=35050), auto;
+}
+
+a:hover {
+    color: #89bae7;
+    cursor: url(http://www.rw-designer.com/cursor-extern.php?id=35050), auto;
+    font-weight: bold;
+}
+
+a {
+    text-decoration: none;
+    font-size: 20px;
+}
+
+button, input, textarea {
+    font-family: 'MapleStory', sans-serif;
+}
+
+button {
+    background-color: #0085fc;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    width: 100px;
+    height: 35px;
+    font-size: 18px;
+}
+
+button:hover {
+    cursor: url(http://www.rw-designer.com/cursor-extern.php?id=35050), auto;
+    background-color: #4badfe;
+}
+
+input:hover, textarea:hover {
+    cursor: url(http://www.rw-designer.com/cursor-extern.php?id=35050), auto;
+    border: 2px solid #0085fc;
+}
+
+.bigBtn {
+    background-color: #0085fc;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    width: 200px;
+    height: 40px;
+    font-size: 18px;
+}
+
+#addMeetingBtn {
+    background-color: #0085fc;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    width: 35px;
+    height: 35px;
+    font-size: 25px;
+}
+
+h2 {
+    font-size: 30px;
+    margin: 60px 0px 30px;
+}
+
+th {
+    font-size: 24px;
+    padding-bottom: 20px;
+}
+
+td {
+    padding: 5px 20px;
+    font-size: 18px;
+}
+
+label {
+    font-size: 20px;
+}
+
+input {
+    height: 22px;
+    width: 250px;
+    font-size: 16px;
+}
+
+input[type="radio"] {
+    height:18px;
+    width: 18px;
+    font-size: 16px;
+    margin: 8px;
+}
+
+textarea {
+    width: 250px;
+    font-size: 16px;
+}
+
+.childDiv {
+    display: inline-block; 
+    vertical-align: middle; 
+    margin: 0;
+    padding: 40px;
+   min-height: 600px;
+}
+
+.loginInputs {
+    height: 22px;
+    width: 200px;
+    font-size: 16px;
+}
+
+#loginDiv {
+    padding: 15px;
+    border-radius: 40px;
+    width: 280px; 
+    margin:200px auto; 
+    background-color: #fff;
+    height: 340px;
 }

@@ -7,8 +7,10 @@ export function HomePage() {
 
     return <>
         <NavBar />
-        <MeetingList />
-        <Link to='/complaintform'><button>Report a complaint</button></Link>
-
+        <div className="pageContainer">
+            <MeetingList />
+            <br />
+            <Link to='/complaintform'><button className="bigBtn" style={{ margin: '20px' }}>File a complaint</button></Link>
+        </div>
     </>
 }

@@ -1,6 +1,7 @@
 import { useState, FormEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import { createComplaint } from "../../api/complaint-requests";
+import { NavBar } from "../nav-bar";
 
 export type ComplaintInput = {
     description: string,
@@ -9,6 +10,7 @@ export type ComplaintInput = {
 export function ComplaintForm() {
 
     const [complaint, setComplaint] = useState<ComplaintInput>({ description: '' });
+    const numRows = 6;
 
     const navigate = useNavigate();
 
@@ -20,21 +22,24 @@ export function ComplaintForm() {
     }
 
     return <>
-
-        <form onSubmit={handleSubmit}>
-            <h1>Complaint Form</h1>
-            <h2>Submit a Complaint</h2>
-            <label htmlFor="description">Description</label>
-            <input
-                id="description"
-                name="description"
-                type="text"
-                value={complaint.description}
-                onChange={e => setComplaint({ description: e.target.value })}
-                required />
+        <NavBar />
+        <div className="pageContainer" style={{paddingTop: '100px'}}>
+            <form onSubmit={handleSubmit}>
+                <label htmlFor="description">Please describe your complaint: </label>
+                <br /><br />
+                <textarea
+                    id="description"
+                    name="description"
+                    rows={numRows}
+                    style={{width: '400px', fontSize: '15px'}}
+                    value={complaint.description}
+                    onChange={e => setComplaint({ description: e.target.value })}
+                    required
+                />
                 {/* Add modal for confirmation */}
-            <button type="submit">Post</button>
-        </form>
-
+                <br /><br />
+                <button type="submit">Submit</button>
+            </form>
+        </div>
     </>
 }
