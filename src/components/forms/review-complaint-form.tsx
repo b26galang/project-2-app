@@ -2,6 +2,9 @@ import { FormEvent, useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { useNavigate } from "react-router-dom";
 import { Complaint, getComplaintById, updateComplaint } from "../../api/complaint-requests";
+import { getMeetings } from "../../api/meeting-requests";
+import { Meeting } from "../../reducer/meeting-reducer";
+import { NavBar } from "../nav-bar";
 
 
 export function ReviewComplaintForm() {
@@ -9,6 +12,11 @@ export function ReviewComplaintForm() {
     const { complaintId } = useParams();
     const [complaint, setComplaint] = useState<Complaint>();
     const [status, setStatus] = useState<string>("");
+    const [meetingId, setMeetingId] = useState<number>(0);
+    const [meetings, setMeetings] = useState<Meeting[]>([]);
+    const [meetingVisibility, setMeetingVisibility] = useState<boolean>(false);
+
+
 
     const navigate = useNavigate();
 
@@ -16,56 +24,93 @@ export function ReviewComplaintForm() {
         getComplaintById(Number(complaintId)).then((data) => setComplaint(data));
     }, [complaintId]);
 
+    useEffect(() => {
+        (async () => {
+            const retrievedMeetings = await getMeetings();
+            setMeetings(retrievedMeetings)
+        })();
+    }, []);
+
+
+
     async function handleSubmit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault();
         if (complaint) {
-            const updatedComplaint = { ...complaint, status: status };
+            const updatedComplaint = { ...complaint, status: status, meetingId: meetingId };
             await updateComplaint(updatedComplaint);
             setComplaint(updatedComplaint);
             navigate('/appuserhome');
         }
     }
 
-    return (
-        <>
+    // const [complaint, setComplaint] = useState<Complaint>();
+
+    // const updateMeetingId = (newMeetingId: number) => {
+    //     if (complaint) {
+    //         const updatedComplaint: Complaint = {
+    //             ...complaint,
+    //             meetingId: newMeetingId,
+    //         };
+    //         updateComplaint(updatedComplaint);
+    //     }
+    // };
+
+    return <>
+        <NavBar />
+        <div className="pageContainer" style={{ flexDirection: 'row', marginLeft: '200px' }}>
             <form onSubmit={handleSubmit}>
-                <ul>
-                    <li>
-                        <legend>Status</legend>
-                    </li>
-                    <li>
-                        <label>
-                            <input type="radio" name="status" value="UNREVIEWED" onChange={(e) => setStatus(e.target.value)} />
-                            UNREVIEWED
-                        </label>
-                    </li>
-                    <li>
-                        <label>
-                            <input type="radio" name="status" value="HIGH PRIORITY" onChange={(e) => setStatus(e.target.value)} />
-                            HIGH PRIORITY
-                        </label>
-                    </li>
-                    <li>
-                        <label>
-                            <input type="radio" name="status" value="LOW PRIORITY" onChange={(e) => setStatus(e.target.value)} />
-                            LOW PRIORITY
-                        </label>
-                    </li>
-                    <li>
-                        <label>
-                            <input type="radio" name="status" value="IGNORED" onChange={(e) => setStatus(e.target.value)} />
-                            IGNORED
-                        </label>
-                    </li>
-                    <li>
-                        <label>
-                            <input type="radio" name="status" value="ADDRESSED" onChange={(e) => setStatus(e.target.value)} />
-                            ADDRESSED
-                        </label>
-                    </li>
-                </ul>
-                <button type="submit">Set Status</button>
+                <div className="childDiv">
+                    <ul>
+                        <li>
+                            <h2>Status</h2>
+                        </li>
+                        <li>
+                        </li>
+                        <li>
+                            <label>
+                                <input type="radio" name="status" value="HIGH PRIORITY" onChange={(e) => {setStatus(e.target.value); setMeetingVisibility(true)}} />
+                                HIGH PRIORITY
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <input type="radio" name="status" value="LOW PRIORITY" onChange={(e) => {setStatus(e.target.value); setMeetingVisibility(true)}}  />
+                                LOW PRIORITY
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <input type="radio" name="status" value="IGNORED" onChange={(e) => {setStatus(e.target.value); setMeetingVisibility(false)}}/>
+                                IGNORED
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <input type="radio" name="status" value="ADDRESSED" onChange={(e) => {setStatus(e.target.value); setMeetingVisibility(false)}} />
+                                ADDRESSED
+                            </label>
+                        </li>
+                    </ul>
+
+                </div>
+                {meetingVisibility && 
+                <><div className="childDiv">
+                        <h2>Meetings</h2>
+                        <table>
+                            <tbody>
+                                {meetings.map(m => <tr key={m.meetingId}>
+                                    <td>{m.meetingId}</td>
+                                    <td>{m.summary}</td>
+                                </tr>)}
+                            </tbody>
+                        </table>
+                    </div><div className="childDiv">
+                            <h2>Assign complaint to meeting</h2>
+                            <input type="number" onChange={(e) => setMeetingId(Number(e.target.value))} placeholder="Enter meeting ID #" />
+                        </div></>
+                }
+                <button type="submit" style={{ margin: '10px 60px' }}>Set</button>
             </form>
-        </>
-    );
+        </div>
+    </>
 }

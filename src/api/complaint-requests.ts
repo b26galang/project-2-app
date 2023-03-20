@@ -50,3 +50,9 @@ export async function getComplaintById(id: number): Promise<Complaint> {
     return retrievedComplaint;
 }
 
+export async function getComplaintsByStatus(status: string): Promise<Complaint[]> {
+    const response = await fetch(`${url}/complaints?flag=${status}`);
+    const retrievedComplaints: Complaint[] = await response.json();
+    return retrievedComplaints;
+}
+

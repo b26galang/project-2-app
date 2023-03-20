@@ -15,9 +15,8 @@ export function AppUserMeetingList() {
     }, []);
 
     return <>
-        <h2>Meetings</h2>
-        <h3>Add a New Meeting</h3>
-        <Link to='/meetingform'><button>Add</button></Link>
+        <h2 style={{ display: 'inline'}}>Meetings ( {meetings.length} ) <Link to='/meetingform'><button id="addMeetingBtn">+</button></Link></h2>
+        
         <table>
             <tbody>
                 {meetings.map(m =>
