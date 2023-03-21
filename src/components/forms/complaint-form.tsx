@@ -18,6 +18,7 @@ export function ComplaintForm() {
         event.preventDefault();
         await createComplaint(complaint);
         setComplaint({ description: '' });
+        alert('Complaint successfully submitted.')
         navigate('/home');
     }
 

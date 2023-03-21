@@ -23,7 +23,7 @@ body {
     padding-top: 20px;
 }
 
-#logoutBtn {
+.logBtn {
     display: inline;
     color: white;
     float: right;
@@ -61,7 +61,7 @@ button {
     font-size: 18px;
 }
 
-button:hover {
+button:hover, #constituentBtn:hover {
     cursor: url(http://www.rw-designer.com/cursor-extern.php?id=35050), auto;
     background-color: #4badfe;
 }
@@ -78,6 +78,16 @@ input:hover, textarea:hover {
     border-radius: 10px;
     width: 200px;
     height: 40px;
+    font-size: 18px;
+}
+
+#constituentBtn {
+    background-color: #0085fc;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    width: 240px;
+    height: 60px;
     font-size: 18px;
 }
 
@@ -138,15 +148,21 @@ textarea {
 
 .loginInputs {
     height: 22px;
-    width: 200px;
+    width: 240px;
     font-size: 16px;
 }
 
 #loginDiv {
     padding: 15px;
     border-radius: 40px;
-    width: 280px; 
+    width: 330px; 
     margin:200px auto; 
     background-color: #fff;
-    height: 340px;
+    height: 420px;
+}
+
+.homeLink {
+    display: inline;
+    padding-left: 50px;
+    color: white;
 }
