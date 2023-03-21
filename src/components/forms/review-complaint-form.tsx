@@ -43,22 +43,16 @@ export function ReviewComplaintForm() {
         }
     }
 
-    // const [complaint, setComplaint] = useState<Complaint>();
-
-    // const updateMeetingId = (newMeetingId: number) => {
-    //     if (complaint) {
-    //         const updatedComplaint: Complaint = {
-    //             ...complaint,
-    //             meetingId: newMeetingId,
-    //         };
-    //         updateComplaint(updatedComplaint);
-    //     }
-    // };
-
     return <>
         <NavBar />
         <div className="pageContainer" style={{ flexDirection: 'row', marginLeft: '200px' }}>
             <form onSubmit={handleSubmit}>
+                <div className="childDiv">
+                    <h2>Complaint:</h2>
+                    {complaint &&
+                        <li>{complaint.description}</li>
+                    }
+                </div>
                 <div className="childDiv">
                     <ul>
                         <li>
@@ -68,48 +62,42 @@ export function ReviewComplaintForm() {
                         </li>
                         <li>
                             <label>
-                                <input type="radio" name="status" value="HIGH PRIORITY" onChange={(e) => {setStatus(e.target.value); setMeetingVisibility(true)}} />
+                                <input type="radio" name="status" value="HIGH PRIORITY" onChange={(e) => { setStatus(e.target.value); setMeetingVisibility(true) }} />
                                 HIGH PRIORITY
                             </label>
                         </li>
                         <li>
                             <label>
-                                <input type="radio" name="status" value="LOW PRIORITY" onChange={(e) => {setStatus(e.target.value); setMeetingVisibility(true)}}  />
+                                <input type="radio" name="status" value="LOW PRIORITY" onChange={(e) => { setStatus(e.target.value); setMeetingVisibility(true) }} />
                                 LOW PRIORITY
                             </label>
                         </li>
                         <li>
                             <label>
-                                <input type="radio" name="status" value="IGNORED" onChange={(e) => {setStatus(e.target.value); setMeetingVisibility(false)}}/>
+                                <input type="radio" name="status" value="IGNORED" onChange={(e) => { setStatus(e.target.value); setMeetingVisibility(false) }} />
                                 IGNORED
-                            </label>
-                        </li>
-                        <li>
-                            <label>
-                                <input type="radio" name="status" value="ADDRESSED" onChange={(e) => {setStatus(e.target.value); setMeetingVisibility(false)}} />
-                                ADDRESSED
                             </label>
                         </li>
                     </ul>
 
                 </div>
-                {meetingVisibility && 
-                <><div className="childDiv">
-                        <h2>Meetings</h2>
-                        <table>
-                            <tbody>
-                                {meetings.map(m => <tr key={m.meetingId}>
-                                    <td>{m.meetingId}</td>
-                                    <td>{m.summary}</td>
-                                </tr>)}
-                            </tbody>
-                        </table>
-                    </div><div className="childDiv">
+                {meetingVisibility &&
+                    <><div className="childDiv">
+                        <h2>Attach Complaint to Meeting</h2>
+                        <ul>
+                            {meetings.map(m => <tr key={m.meetingId}>
+                                {/* <td>{m.meetingId}</td> */}
+                                <li><input name="meetingId" type="radio" value={m.meetingId} onChange={(e) => setMeetingId(Number(e.target.value))} />{m.summary}</li>
+                            </tr>)}
+                        </ul>
+                    </div>
+                        {/* <div className="childDiv">
                             <h2>Assign complaint to meeting</h2>
                             <input type="number" onChange={(e) => setMeetingId(Number(e.target.value))} placeholder="Enter meeting ID #" />
-                        </div></>
+                        </div> */}
+                    </>
                 }
-                <button type="submit" style={{ margin: '10px 60px' }}>Set</button>
+                <button type="submit" style={{ margin: '0px' }}>Set</button>
             </form>
         </div>
     </>

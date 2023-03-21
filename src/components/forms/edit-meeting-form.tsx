@@ -11,7 +11,7 @@ export function EditMeetingForm() {
     const { meetingId } = useParams();
     const [meeting, setMeeting] = useState<Meeting>();
     const [meetingState, dispatch] = useReducer(MeetingReducer, initialState);
-    const numRows = 3;
+    const numRows = 5;
 
     useEffect(() => {
         getMeetingById(Number(meetingId)).then((data) => setMeeting(data));
@@ -53,20 +53,6 @@ export function EditMeetingForm() {
                         <ul>
                             <li> <h2>Edit Meeting</h2></li>
                             <li>
-                                <label htmlFor="summary">Summary: </label>
-                            </li>
-                            <li>{meeting.summary}</li>
-                            <li>
-                                <textarea
-                                    id="summary"
-                                    name="summary"
-                                    rows={numRows}
-                                    onChange={e => dispatch({ type: "SET_SUMMARY", payload: e.target.value })}
-                                    required
-                                />
-                            </li>
-                            <br />
-                            <li>
                                 <label htmlFor="address">Address: </label>
                             </li>
                             <li>{meeting.address}</li>
@@ -78,10 +64,24 @@ export function EditMeetingForm() {
                             <li>
                                 <label htmlFor="time">Time: </label>
                             </li>
-                            <li>{meeting.time}</li>
+                            <li>{(meeting.time).toString()}</li>
                             <li>
-                                <input id="time" type="number" onChange={e => dispatch({ type: "SET_TIME", payload: Number(e.target.value) })} required />
+                                <input id="time" type="number" onChange={e => dispatch({ type: "SET_TIME", payload: Number(e.target.value)/ 1000 })} required />
                                 <br />
+                            </li>
+                            <br />
+                            <li>
+                                <label htmlFor="summary">Summary: </label>
+                            </li>
+                            <li>{meeting.summary}</li>
+                            <li>
+                                <textarea
+                                    id="summary"
+                                    name="summary"
+                                    rows={numRows}
+                                    onChange={e => dispatch({ type: "SET_SUMMARY", payload: e.target.value })}
+                                    required
+                                />
                             </li>
                             <br />
                             <li>
