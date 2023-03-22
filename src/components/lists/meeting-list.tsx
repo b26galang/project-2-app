@@ -21,9 +21,6 @@ export function MeetingList() {
                 {meetings.map(m =>
                     <tr key={m.meetingId}>
                         <td>{m.summary}</td>
-                        {/* clicking on view will direct user to specific meeting page where it will show details: address and time */}
-                        {/* <td>{m.time}</td>
-                        <td>{m.address}</td> */}
                         <td><Link to={`/meeting/${m.meetingId}`}><button>View</button></Link></td>
                     </tr>)}
             </tbody>

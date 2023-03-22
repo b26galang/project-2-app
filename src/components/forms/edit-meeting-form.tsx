@@ -1,5 +1,6 @@
 import { FormEvent, useEffect, useReducer, useState } from "react";
 import { useParams } from "react-router";
+import { useNavigate } from "react-router-dom";
 import { Complaint, getComplaints, updateComplaint } from "../../api/complaint-requests";
 import { deleteMeeting, getMeetingById, updateMeeting } from "../../api/meeting-requests";
 import { initialState, Meeting, MeetingReducer } from "../../reducer/meeting-reducer";
@@ -8,10 +9,12 @@ import { NavBar } from "../nav-bar";
 
 export function EditMeetingForm() {
 
+    const navigate = useNavigate();
+
     const { meetingId } = useParams();
     const [meeting, setMeeting] = useState<Meeting>();
     const [meetingState, dispatch] = useReducer(MeetingReducer, initialState);
-    const numRows = 5;
+    const numRows = 7;
 
     useEffect(() => {
         getMeetingById(Number(meetingId)).then((data) => setMeeting(data));
@@ -19,6 +22,8 @@ export function EditMeetingForm() {
 
     function handleDelete() {
         deleteMeeting(Number(meetingId));
+        alert('Meeting deleted')
+        navigate('/appuserhome');
     }
 
     const [complaints, setComplaints] = useState<Complaint[]>([]);
@@ -85,13 +90,13 @@ export function EditMeetingForm() {
                             </li>
                             <br />
                             <li>
-                                <button type="submit">Update</button><button onClick={handleDelete} style={{ backgroundColor: 'red', marginLeft: '50px' }}>Delete</button>
+                                <button type="submit">Update</button><button onClick={handleDelete} className="deleteBtn" style={{ marginLeft: '100px' }}>Delete</button>
                             </li>
                         </ul>
                     }
                 </form>
             </div>
-            <div className="childDiv">
+            <div className="childDiv" style={{width: '700px'}}>
                 <h2>Complaints to be Addressed</h2>
                 {meetingId &&
                     <table>

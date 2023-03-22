@@ -47,7 +47,9 @@ a {
     font-size: 20px;
 }
 
-button, input, textarea {
+button,
+input,
+textarea {
     font-family: 'MapleStory', sans-serif;
 }
 
@@ -61,12 +63,14 @@ button {
     font-size: 18px;
 }
 
-button:hover, #constituentBtn:hover {
+button:hover,
+#constituentBtn:hover {
     cursor: url(http://www.rw-designer.com/cursor-extern.php?id=35050), auto;
     background-color: #4badfe;
 }
 
-input:hover, textarea:hover {
+input:hover,
+textarea:hover {
     cursor: url(http://www.rw-designer.com/cursor-extern.php?id=35050), auto;
     border: 2px solid #0085fc;
 }
@@ -120,30 +124,31 @@ label {
     font-size: 20px;
 }
 
-input {
+input:not([type="checkbox"]) {
     height: 22px;
-    width: 250px;
+    width: 300px;
     font-size: 16px;
 }
 
-input[type="radio"] {
-    height:18px;
+input[type="radio"],
+input[type="checkbox"] {
+    height: 18px;
     width: 18px;
     font-size: 16px;
     margin: 8px;
 }
 
 textarea {
-    width: 250px;
+    width: 300px;
     font-size: 16px;
 }
 
 .childDiv {
-    display: inline-block; 
-    vertical-align: middle; 
+    display: inline-block;
+    vertical-align: middle;
     margin: 0;
     padding: 40px;
-   min-height: 600px;
+    min-height: 600px;
 }
 
 .loginInputs {
@@ -155,8 +160,8 @@ textarea {
 #loginDiv {
     padding: 15px;
     border-radius: 40px;
-    width: 330px; 
-    margin:200px auto; 
+    width: 330px;
+    margin: 200px auto;
     background-color: #fff;
     height: 420px;
 }
@@ -165,4 +170,18 @@ textarea {
     display: inline;
     padding-left: 50px;
     color: white;
+}
+
+.deleteBtn {
+    background-color: #db0906;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    width: 100px;
+    height: 35px;
+    font-size: 18px;
+}
+
+.deleteBtn:hover {
+    background-color: #b30705;
 }

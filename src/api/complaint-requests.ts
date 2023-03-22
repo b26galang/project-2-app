@@ -56,3 +56,9 @@ export async function getComplaintsByStatus(status: string): Promise<Complaint[]
     return retrievedComplaints;
 }
 
+export async function deleteComplaint(id: number): Promise<void> {
+    await fetch(`${url}/complaints/${id}`, {
+        method: 'DELETE',
+    });
+}
+

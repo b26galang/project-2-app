@@ -10,7 +10,7 @@ export type ComplaintInput = {
 export function ComplaintForm() {
 
     const [complaint, setComplaint] = useState<ComplaintInput>({ description: '' });
-    const numRows = 6;
+    const numRows = 10;
 
     const navigate = useNavigate();
 
@@ -26,7 +26,7 @@ export function ComplaintForm() {
         <NavBar />
         <div className="pageContainer" style={{paddingTop: '100px'}}>
             <form onSubmit={handleSubmit}>
-                <label htmlFor="description">Please describe your complaint: </label>
+                <label htmlFor="description">Please describe the issue: </label>
                 <br /><br />
                 <textarea
                     id="description"

@@ -17,7 +17,7 @@ export function MeetingForm() {
     const [meetingState, dispatch] = useReducer(MeetingReducer, initialState);
     const [complaints, setComplaints] = useState<Complaint[]>([]);
 
-    const numRows = 5;
+    const numRows = 7;
 
     async function submitData(event: FormEvent<HTMLFormElement>) {
         let meeting: MeetingInputs = { address: "", summary: "", time: 0 };

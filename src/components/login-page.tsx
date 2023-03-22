@@ -19,7 +19,6 @@ export function LoginPage() {
             const user = await loginAppUser(form.username, form.password);
             if (user) {
                 localStorage.setItem('username', user.username);
-                localStorage.setItem('userId', user.password);
                 navigate('/appuserhome');
             } else {
                 alert('Incorrect login information');
@@ -39,14 +38,14 @@ export function LoginPage() {
                     <label htmlFor="username">User Name:</label>
                 </li>
                 <li>
-                    <input id="username" type="text" className="loginInputs" onChange={e => setForm({ ...form, username: e.target.value })} />
+                    <input style={{ width: '240px'}} id="username" type="text" className="loginInputs" onChange={e => setForm({ ...form, username: e.target.value })} />
                 </li>
                 <br />
                 <li>
                     <label htmlFor="password">Password:</label>
                 </li>
                 <li>
-                    <input id="password" type="password" className="loginInputs" onChange={e => setForm({ ...form, password: e.target.value })} />
+                    <input style={{ width: '240px'}} id="password" type="password" className="loginInputs" onChange={e => setForm({ ...form, password: e.target.value })} />
                 </li>
                 <br /> <br />
                 <li>
