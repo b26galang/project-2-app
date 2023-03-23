@@ -48,16 +48,23 @@ export function ReviewComplaintForm() {
         <NavBar />
 
         <form onSubmit={handleSubmit}>
-            <div className="pageContainer" style={{ flexDirection: 'row', marginLeft: '400px' }}>
-                <div className="childDiv">
-                    <h2>Complaint:</h2>
-                    {complaint &&
-                        <li>{complaint.description}</li>
-                    }
-                    <div>
+            <div className="pageContainer">
+            <div style={{ textAlign: 'left', paddingTop: '40px', width: '1100px' }}>
+                <Link to='/appuserhome'>
+                    <button>← Back</button>
+                </Link>
+            </div>
+                <div style={{ flexDirection: 'row' }}>
+                    <div className="childDiv" style={{ width: '400px', height: '240px' }}>
+                        <h2>Complaint:</h2>
+                        {complaint &&
+                            <li>{complaint.description}</li>
+                        }
+                    </div>
+                    <div className="childDiv" style={{ width: '200px', height: '240px' }}>
                         <ul>
                             <li>
-                                <h2>Status</h2>
+                                <h2>Set Status</h2>
                             </li>
                             <li>
                             </li>
@@ -82,20 +89,28 @@ export function ReviewComplaintForm() {
                         </ul>
                     </div>
                 </div>
-                {meetingVisibility &&
-                    <><div className="childDiv">
-                        <h2>Attach Complaint to Meeting</h2>
-                        <ul>
-                            {meetings.map(m => <tr key={m.meetingId}>
-                                <li><input name="meetingId" type="radio" value={m.meetingId} onChange={(e) => setMeetingId(Number(e.target.value))} />{m.summary}</li>
-                            </tr>)}
-                        </ul>
-                    </div>
-                    </>
-                }
+                <div style={{ height: '250px' }}>
+                    {meetingVisibility &&
+                        <><div>
+                            <h2>Attach Complaint to Meeting</h2>
+                            <select value={meetingId} onChange={(e) => setMeetingId(Number(e.target.value))}>
+                            <option value="">------------ Select a meeting ------------</option>
+                                {meetings.map(m => (
+                                    <option key={m.meetingId} value={m.meetingId}>
+                                        {m.summary}
+                                    </option>
+                                ))}
+                            </select>
+
+                        </div>
+                        </>
+                    }
+                </div>
+                <div>
+                    <button type="submit" style={{ marginLeft: '0px' }}>Set</button>
+                </div>
             </div>
-            <button type="submit" style={{ marginLeft: '700px'}}>Set</button>
-            <Link to={'/appuserhome'}><button type="submit" style={{ marginLeft: '200px'}}>Cancel</button></Link>
+
         </form>
     </>
 }

@@ -30,26 +30,24 @@ export function LoginPage() {
 
     return <div id="loginDiv">
         <form onSubmit={(e: FormEvent<HTMLFormElement>) => signIn(e)}>
-            <ul style={{ listStyle: "none" }}>
-                <li>
-                    <h3>Council Member Sign In</h3>
-                </li>
+            <h3 style={{ fontSize: '25px', padding: '0px 30px' }}>Council Member Sign In</h3>
+            <ul style={{ listStyle: "none", padding: '0px 60px'}}>
                 <li>
                     <label htmlFor="username">User Name:</label>
                 </li>
                 <li>
-                    <input style={{ width: '240px'}} id="username" type="text" className="loginInputs" onChange={e => setForm({ ...form, username: e.target.value })} />
+                    <input style={{ width: '220px' }} id="username" type="text" className="loginInputs" onChange={e => setForm({ ...form, username: e.target.value })} />
                 </li>
                 <br />
                 <li>
                     <label htmlFor="password">Password:</label>
                 </li>
                 <li>
-                    <input style={{ width: '240px'}} id="password" type="password" className="loginInputs" onChange={e => setForm({ ...form, password: e.target.value })} />
+                    <input style={{ width: '220px' }} id="password" type="password" className="loginInputs" onChange={e => setForm({ ...form, password: e.target.value })} />
                 </li>
                 <br /> <br />
                 <li>
-                    <button style={{ marginLeft: '45px' }} type="submit">Log in</button>
+                    <button style={{ marginLeft: '55px' }} type="submit">Log in</button>
                 </li>
                 <br />
                 <h3>Constituents:</h3>

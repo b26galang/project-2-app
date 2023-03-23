@@ -1,5 +1,5 @@
 import { useState, FormEvent } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { createComplaint } from "../../api/complaint-requests";
 import { NavBar } from "../nav-bar";
 
@@ -24,7 +24,12 @@ export function ComplaintForm() {
 
     return <>
         <NavBar />
-        <div className="pageContainer" style={{paddingTop: '100px'}}>
+        <div className="pageContainer">
+        <div style={{ textAlign: 'left', paddingTop: '40px', width: '1100px' }}>
+                <Link to='/home'>
+                    <button>← Back</button>
+                </Link>
+            </div>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="description">Please describe the issue: </label>
                 <br /><br />

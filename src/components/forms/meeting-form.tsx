@@ -1,5 +1,5 @@
 import { FormEvent, useEffect, useReducer, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Complaint, getComplaints } from "../../api/complaint-requests";
 import { createMeeting } from "../../api/meeting-requests";
 import { initialState, MeetingReducer } from "../../reducer/meeting-reducer";
@@ -39,6 +39,11 @@ export function MeetingForm() {
     return <>
         <NavBar />
         <div className="pageContainer">
+            <div style={{ textAlign: 'left', paddingTop: '40px', width: '1100px' }}>
+                <Link to='/appuserhome'>
+                    <button>← Back</button>
+                </Link>
+            </div>
             <form onSubmit={(e: FormEvent<HTMLFormElement>) => submitData(e)}>
                 <ul>
                     <li>

@@ -15,9 +15,10 @@ export function AppUserMeetingList() {
     }, []);
 
     return <>
-        <h2 style={{ display: 'inline'}}>Meetings ( {meetings.length} ) <Link to='/meetingform'><button id="addMeetingBtn">+</button></Link></h2>
-        
-        <table>
+        <h2 style={{ textAlign: 'center' }}>
+            Meetings ( {meetings.length} ) <Link to='/meetingform'>
+                <button id="addMeetingBtn">+</button></Link></h2>
+        <table style={{ margin: '0px auto' }}>
             <tbody>
                 {meetings.map(m =>
                     <tr key={m.meetingId}>

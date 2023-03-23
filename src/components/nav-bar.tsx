@@ -9,7 +9,7 @@ export function NavBar() {
         navigate("/");
     }
 
-    return <div style={{ backgroundColor: "#227dfc", color: "white", height: "40px", paddingTop: "10px", display: 'block' }}>
+    return <div style={{ backgroundColor: "#227dfc", color: "white", height: "40px", paddingTop: "10px", display: 'block'}}>
         {localStorage.length > 0 ? <>
             <Link to={'/appuserhome'} className="homeLink">Home</Link>
             <a className="logBtn" onClick={logout}>
