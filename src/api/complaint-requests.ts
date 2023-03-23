@@ -11,7 +11,7 @@ export type ComplaintId = {
     complaintId: number
 }
 
-export const url = "http://52.3.247.213/:8080";
+export const url = "http://52.3.247.213:8080";
 
 export async function createComplaint(complaint: ComplaintInput): Promise<Complaint> {
     const response = await fetch(`${url}/complaints`, {
