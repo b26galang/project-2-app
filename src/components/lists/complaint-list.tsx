@@ -38,7 +38,7 @@ export function ComplaintList() {
 
     async function applyFilter(event: React.ChangeEvent<HTMLSelectElement>, status: string) {
         event.preventDefault();
-        switch(status) {
+        switch (status) {
             case "UNREVIEWED": {
                 const unreviewedComplaints = await getComplaintsByStatus("UNREVIEWED");
                 setComplaints(unreviewedComplaints);
@@ -108,21 +108,22 @@ export function ComplaintList() {
             </tr>
         </table>
 
+        <div style={{height: '300px', overflow: 'scroll'}}>
+            <table style={{ width: '1000px' }}>
+                <tbody>
+                    {complaints.map(c =>
+                        <tr key={c.complaintId}>
+                            {c.status === "IGNORED" ?
+                                <td style={{ padding: '0px' }}><input type="checkbox" onChange={(e) => handleCheckBoxInput(e, c.complaintId)} value={c.complaintId} /></td>
+                                : <td></td>
+                            }
+                            <td style={{ paddingLeft: '0px', width: '600px' }}>{c.description}</td>
+                            <td style={{}}>{c.status}</td>
 
-        <table style={{width: '1000px'}}>
-            <tbody>
-                {complaints.map(c =>
-                    <tr key={c.complaintId}>
-                        {c.status === "IGNORED" ?
-                            <td style={{ padding: '0px' }}><input type="checkbox" onChange={(e) => handleCheckBoxInput(e, c.complaintId)} value={c.complaintId} /></td>
-                            : <td></td>
-                        }
-                        <td style={{ paddingLeft: '0px', width: '600px' }}>{c.description}</td>
-                        <td style={{ }}>{c.status}</td>
-
-                        <td><Link to={`/complaint/${c.complaintId}`}><button>Review</button></Link></td>
-                    </tr>)}
-            </tbody>
-        </table>
+                            <td><Link to={`/complaint/${c.complaintId}`}><button>Review</button></Link></td>
+                        </tr>)}
+                </tbody>
+            </table>
+        </div>
     </>
 }
