@@ -104,7 +104,7 @@ export function EditMeetingForm() {
                         }
                     </form>
                 </div>
-                <div className="childDiv" style={{ minHeight: '580px' }}>
+                <div className="childDiv" style={{ minHeight: '600px' }}>
                     <h2>Complaints to be Addressed</h2>
                     {meetingId &&
                         <table>

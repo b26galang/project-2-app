@@ -50,7 +50,7 @@ export function MeetingPage() {
                         </div>
                     }
                 </div>
-                <div className="childDiv" style={{ minHeight: '300px' }}>
+                <div className="childDiv" style={{ minHeight: '350px' }}>
                     <h2>Complaints to be addressed</h2>
                     {complaints.filter(c => c.meetingId === Number(meetingId)).map(c =>
                         <ul>
